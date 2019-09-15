@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>closeToZero</title>
+  <script src="closeToZero.js"></script>
+</head>
+<body>
+
+<label for="temperature"> Entrez ici, le relevé des temperatures séparé par un espace</label>
+<input type="text" name="temperature" id="temperature"/>
+<br><br>
+<input type='button' value="valider" id="submit"/>
+<br><br>
+
+<div id="result"></div>
+
+</body>
+<script>
+var submit = document.getElementById('submit');
+submit.onclick = function(){
+	var ts = document.getElementById('temperature').value.split(" ");
+	document.getElementById('result').innerHTML = 'la temperature le plus proche de 0 est : ' + closeToZero(ts);
+};
+</script>
+</html>

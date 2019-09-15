@@ -1,0 +1,34 @@
+1/
+Ecrivez la commande qui permet de créer une branche 'new_branch' à partir de la branche courante et de se placer sur cette branche nouvellement créée
+> git branch new_branch
+> git checkout new_branch
+ou
+> git checkout -b new_branch
+
+
+2/
+Vous travaillez sur la branche 'feature' qui a quelques commits locaux.
+Cette branche n'est pas tout a fait prête pour un merge complet mais vous voudriez quand même amener un seul de ces commits de la branche 'feature' vers la branche 'master'.
+quelle commandeutiliseriez-vous ?
+> git checkout master
+> git cherry-pick commit-number
+
+
+3/ 
+Quelle est la difference entre une branche et un tag ?
+> tag : sauvegarde d'une branche à un instant tag
+> branche : permet d'avoir une copie du code de la branche master, sur laquelle travailler sans impacter le code de celle ci
+
+
+4/
+Pour tout  booleen b :
+> var c = b ? !b : b;
+Quelle est la valeur de c ?
+> c = !c;
+'c' aura toujours la valeur de '!c'
+
+
+6/
+En webdesign, que veut dire 'responsiveness' ?
+> Je ne sais pas, comme ca, je donnerais une definition identique à celle de 'reponsive', 
+> un site qui s'adapte à la taille du device sur lequel il est lu.
