@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>personne en Vie</title>
+  <script src="question7.js"></script>
+</head>
+<body>
+
+<label for="year"> Entrez ici, le tableau avec les dates de naissance et de mort</label><br>
+<textarea type="" name="year" id="year"rows="8" cols="50" placeholder="entrer les valeurs au formats 
+naissance : 1920 mort : 1944
+naissance : 1965 mort : undefined
+naissance : 1933 mort : 1944
+naissance : 1921 mort : 2000
+naissance : 1955 mort : undefined
+naissance : 1965 mort : undefined"></textarea>
+<br><br>
+<input type='button' value="valider" id="submit"/>
+<br><br>
+
+<div id="result"></div>
+
+</body>
+<script>
+var submit = document.getElementById('submit');
+submit.onclick = function(){
+	var res = document.getElementById('year').value.split("\n");
+	var tab = [];
+	for(var i = 0; i < res.length; i++){
+		var tmp = res[i].split(" ");
+		var date = {
+			naissance : tmp[2],
+			mort : tmp[5]
+		};
+		tab.push(date);
+	}
+	document.getElementById('result').innerHTML = 'Année ou il y a le plus de personnes en vie : ' + year_alive(tab);
+
+};
+</script>
+</html>
