@@ -4,11 +4,17 @@
   <meta charset="utf-8">
   <title>closeToZero</title>
   <script src="question5.js"></script>
+  <style>
+  input[type=number]{display:block}
+  </style>
 </head>
 <body>
-
-<label for="temperature"> Entrez ici, le relevé des temperatures séparé par un espace</label>
-<input type="text" name="temperature" id="temperature"/>
+<div id="temp">
+	<label for="temperature"> Entrez ici, le relevé des temperatures</label>
+	<input type="number" name="temperature0" id="temperature0" class="temperature"/>
+</div>
+<br>
+<input type='button' value="Ajouter un relevé" id="add"/>
 <br><br>
 <input type='button' value="valider" id="submit"/>
 <br><br>
@@ -17,10 +23,28 @@
 
 </body>
 <script>
+var add = document.getElementById('add');
+var cpt = 0;
+add.onclick = function(){
+	cpt++;
+	var newInput = document.createElement("input");
+	newInput.setAttribute('type', 'number');
+	newInput.setAttribute('name', 'temperature' + cpt);
+	newInput.setAttribute('class', 'temperature');
+	newInput.setAttribute('id', 'temperature' + cpt);
+	document.getElementById('temp').appendChild(newInput);
+}
 var submit = document.getElementById('submit');
+var ts = [];
 submit.onclick = function(){
-	var ts = document.getElementById('temperature').value.split(" ");
+	
+	var tempClass = document.getElementsByClassName('temperature');
+	for (var i = 0; i < tempClass.length ; i++){
+		if(document.getElementById('temperature' + i) != ""){
+			ts.push(document.getElementById('temperature' + i).value);
+		}
+	}
 	document.getElementById('result').innerHTML = 'la temperature le plus proche de 0 est : ' + closeToZero(ts);
-};
+}
 </script>
 </html>
