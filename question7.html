@@ -6,7 +6,7 @@
   <script src="question7.js"></script>
 </head>
 <body>
-
+<!--
 <label for="year"> Entrez ici, le tableau avec les dates de naissance et de mort</label><br>
 <textarea type="" name="year" id="year"rows="8" cols="50" placeholder="entrer les valeurs au formats 
 naissance : 1920 mort : 1944
@@ -20,23 +20,69 @@ naissance : 1965 mort : undefined"></textarea>
 <br><br>
 
 <div id="result"></div>
+-->
+<div id='list'>
+	<label for="year"> Entrez ici, le tableau avec les dates de naissance et de mort, pour les dates inconnues, ne pas mettre de contenu</label><br>
+	<p class="person"><input type="number" placeholder="naissance" name="naissance0" id="naissance0" class="naissance"/> 
+		<input type="number" placeholder="mort" name="mort0" id="mort0" class="mort"/></p>
+</div>
+<br>
+<input type='button' value="Ajouter une personne" id="add"/>
+<br><br>
+<input type='button' value="valider" id="submit"/>
+<br><br>
+
+<div id="result"></div>
 
 </body>
 <script>
+
+var add = document.getElementById('add');
+var cpt = 0;
 var submit = document.getElementById('submit');
+
+add.onclick = function(){
+	cpt++;
+	var newP = document.createElement("p");
+	newP.setAttribute('class', 'person');
+	
+	var newInputB = document.createElement("input");
+	newInputB.setAttribute('type', 'number');
+	newInputB.setAttribute('name', 'naissance' + cpt);
+	newInputB.setAttribute('class', 'naissance');
+	newInputB.setAttribute('placeholder', 'naissance');
+	newInputB.setAttribute('id', 'naissance' + cpt);
+	newP.appendChild(newInputB);
+
+	var newInputD = document.createElement("input");
+	newInputD.setAttribute('type', 'number');
+	newInputD.setAttribute('name', 'mort' + cpt);
+	newInputD.setAttribute('class', 'mort');
+	newInputD.setAttribute('placeholder', 'mort');
+	newInputD.setAttribute('id', 'mort' + cpt);
+	newP.appendChild(newInputD);
+	
+	document.getElementById('list').appendChild(newP);
+}
+
 submit.onclick = function(){
-	var res = document.getElementById('year').value.split("\n");
 	var tab = [];
-	for(var i = 0; i < res.length; i++){
-		var tmp = res[i].split(" ");
+	var birth, death;
+	var personClass = document.getElementsByClassName('person');
+	for (var i = 0; i < personClass.length ; i++){
+		birth = document.getElementById('naissance' + i).value;
+		if(birth == "")
+			birth = undefined;
+		death = document.getElementById('mort' + i).value;
+		if(death == "")
+			death = undefined;
 		var date = {
-			naissance : tmp[2],
-			mort : tmp[5]
+			naissance : birth,
+			mort : death
 		};
 		tab.push(date);
 	}
 	document.getElementById('result').innerHTML = 'Année ou il y a le plus de personnes en vie : ' + year_alive(tab);
-
 };
 </script>
 </html>
